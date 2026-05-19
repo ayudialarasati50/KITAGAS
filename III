@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KITAGAS Studio — Build Apps with AI & Google Apps Script</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ctext x='0' y='14' font-size='14'%3E%F0%9F%92%A1%3C/text%3E%3C/svg%3E">
+  <style>
+    /* ═══════════════════════════════════════════════════════
+       KITAGAS STUDIO — COMPLETE CSS (Embedded)
+    ═══════════════════════════════════════════════════════ */
+
+    /* Reset & Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #030712;
+      color: #ffffff;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    a:hover {
+      color: #ffffff;
+    }
+
+    p {
+      color: #94a3b8;
+    }
+
+    ul, li {
+      list-style: none;
+    }
+
+    /* Typography */
+    h1, h2 {
+      background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 45%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    h3, h4 {
+      color: #ffffff;
+    }
+
+    /* Buttons */
+    .btn-fire {
+      display: inline-block;
+      padding: 0.875rem 2rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: #ffffff !important;
+      background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #c026d3 100%);
+      background-size: 200% 200%;
+      border-radius: 0.625rem;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 350ms cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.35);
+    }
+
+    .btn-fire:hover {
+      background-position: 100% 0;
+      box-shadow: 0 8px 40px rgba(124, 58, 237, 0.55);
+      transform: translateY(-2px);
+    }
+
+    .btn-fire:active {
+      transform: translateY(0);
+    }
+
+    .btn-fire::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.18) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: transform 500ms ease;
+    }
+
+    .btn-fire:hover::after {
+      transform: translateX(100%);
+    }
+
+    /* Layout */
+    .page-shell {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(3, 7, 18, 0.75);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+      backdrop-filter: blur(16px);
+      margin: 0 -2rem;
+      padding: 1rem 2rem;
+    }
+
+    .brand-logo {
+      font-weight: 800;
+      font-size: 1.125rem;
+      background: linear-gradient(90deg, #7c3aed, #a855f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .site-nav a {
+      color: #94a3b8;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 200ms ease;
+    }
+
+    .site-nav a:hover {
+      color: #ffffff;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: 2rem;
+      align-items: center;
+      padding-top: 3rem;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.25rem, 4vw, 3.5rem);
+      line-height: 1.05;
+      margin: 1rem 0;
+    }
+
+    .hero-copy p {
+      max-width: 56ch;
+      margin-bottom: 1.75rem;
+      color: #94a3b8;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      font-size: 0.75rem;
+    }
+
+    .hero-actions {
+      margin-top: 1rem;
+    }
+
+    .hero-preview {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1rem;
+      padding: 1.5rem;
+    }
+
+    .hero-preview strong {
+      display: block;
+      margin-bottom: 1rem;
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .preview-box {
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.75rem;
+      background: rgba(255, 255, 255, 0.02);
+      color: #7c8ea3;
+      font-size: 0.875rem;
+    }
+
+    /* Section Surface */
+    .section-surface {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    .section-title {
+      margin-bottom: 0.75rem;
+      font-size: 2rem;
+    }
+
+    .section-copy {
+      color: #94a3b8;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Feature Grid */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card:hover {
+      border-color: rgba(168, 85, 247, 0.35);
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .card h3 {
+      margin-bottom: 0.75rem;
+      font-size: 1.125rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+    }
+
+    /* Table */
+    .table-scroll {
+      overflow-x: auto;
+    }
+
+    .comparison {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .comparison th,
+    .comparison td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      text-align: left;
+    }
+
+    .comparison th {
+      background: rgba(255, 255, 255, 0.04);
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .comparison td {
+      color: #cbd5e1;
+    }
+
+    .comparison tr:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Footer */
+    .site-footer {
+      margin-top: 3rem;
+      padding: 2rem 0 1rem;
+      text-align: center;
+      color: #94a3b8;
+      border-top: 1px solid rgba(148, 163, 184, 0.12);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-copy h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div>
+        <span class="brand-logo">KITAGAS Studio</span>
+      </div>
+      <nav class="site-nav">
+        <a href="#features">Features</a>
+        <a href="#comparison">Comparison</a>
+        <a href="#workspace">Workspace</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">⚡ AI-driven Google Apps Script</p>
+          <h1>Build production-ready Apps in minutes</h1>
+          <p>Use natural language to describe features — KITAGAS generates code, UI, and deployment steps automatically.</p>
+          <div class="hero-actions">
+            <a class="btn-fire" href="#workspace">Start Building →</a>
+          </div>
+        </div>
+
+        <aside class="hero-preview">
+          <strong>✨ Live workspace</strong>
+          <div class="preview-box">Extension sidebar preview · Use the toggle button on Google Apps Script pages</div>
+        </aside>
+      </section>
+
+      <section id="features" class="section-surface">
+        <h2 class="section-title">Why KITAGAS?</h2>
+        <div class="feature-grid">
+          <div class="card">
+            <h3>🚀 Fast prototyping</h3>
+            <p>Create working prototypes and iterate with AI-assisted suggestions in real-time.</p>
+          </div>
+          <div class="card">
+            <h3>🔒 Secure by design</h3>
+            <p>Works inside Google Workspace permissions and follows OAuth2 best practices.</p>
+          </div>
+          <div class="card">
+            <h3>⚙️ Deploy easily</h3>
+            <p>Publish as add-on, web app, or internal tool with automated deployment scripts.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="comparison" class="section-surface">
+        <h2 class="section-title">Quick comparison</h2>
+        <p class="section-copy">KITAGAS vs traditional development approaches.</p>
+        <div class="table-scroll">
+          <table class="comparison">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>KITAGAS</th>
+                <th>Manual Coding</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Setup time</td>
+                <td>Minutes ✓</td>
+                <td>Hours ✕</td>
+              </tr>
+              <tr>
+                <td>AI assistance</td>
+                <td>Full ✓</td>
+                <td>Limited ✕</td>
+              </tr>
+              <tr>
+                <td>Code templates</td>
+                <td>200+ models ✓</td>
+                <td>None ✕</td>
+              </tr>
+              <tr>
+                <td>Deployment automation</td>
+                <td>Yes ✓</td>
+                <td>Manual ✕</td>
+              </tr>
+              <tr>
+                <td>Learning curve</td>
+                <td>Low ✓</td>
+                <td>Steep ✕</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section-surface">
+        <h2 class="section-title">Trusted by</h2>
+        <p class="section-copy">Masajid • Woonotif • Sentwa • Themefood • Umrahverse • Haramain Tech</p>
+      </section>
+
+      <section id="workspace" class="section-surface">
+        <h2 class="section-title">How to use</h2>
+        <p class="section-copy">Install the extension, then:</p>
+        <ul style="color: #cbd5e1; line-height: 2; max-width: 600px;">
+          <li>1️⃣ Open any Google Apps Script editor page</li>
+          <li>2️⃣ Click the ⚡ toggle button to open KITAGAS sidebar</li>
+          <li>3️⃣ Paste your API key (optional for mock mode)</li>
+          <li>4️⃣ Describe the app you want to build</li>
+          <li>5️⃣ Receive AI-generated code and apply it instantly</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 KITAGAS Studio — Professional AI-powered Google Apps Script development environment.</p>
+    </footer>
+  </div>
+
+  <script src="app.js" defer></script>
+  <script src="content.js" defer></script>
+</body>
+</html>
