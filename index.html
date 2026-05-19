@@ -127,6 +127,20 @@
       padding: 1rem 2rem;
     }
 
+    .brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* SVG Logo Container Helper */
+    .brand-logo-svg {
+      display: block;
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
     .brand-logo {
       font-weight: 800;
       font-size: 1.125rem;
@@ -166,6 +180,16 @@
       font-size: clamp(2.25rem, 4vw, 3.5rem);
       line-height: 1.05;
       margin: 1rem 0;
+    }
+
+    .tagline-sub {
+      display: block;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #a855f7;
+      margin-top: 0.5rem;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.02em;
     }
 
     .hero-copy p {
@@ -211,6 +235,17 @@
       background: rgba(255, 255, 255, 0.02);
       color: #7c8ea3;
       font-size: 0.875rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Embedded Workspace Video Styling */
+    .workspace-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 0.75rem;
     }
 
     /* Section Surface */
@@ -232,8 +267,8 @@
       margin-bottom: 1.5rem;
     }
 
-    /* Feature Grid */
-    .feature-grid {
+    /* Feature & Testimonial Grid */
+    .feature-grid, .testimonial-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.25rem;
@@ -260,6 +295,35 @@
 
     .card p {
       font-size: 0.95rem;
+    }
+
+    /* Testimonial Specific Styles */
+    .testimonial-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      color: #cbd5e1;
+      margin-bottom: 1.25rem;
+    }
+
+    .testimonial-author {
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 0.75rem;
+    }
+
+    .testimonial-author strong {
+      color: #ffffff;
+      display: block;
+    }
+
+    .testimonial-author span {
+      color: #7c3aed;
+      font-weight: 600;
     }
 
     /* Table */
@@ -308,7 +372,7 @@
         grid-template-columns: 1fr;
       }
 
-      .feature-grid {
+      .feature-grid, .testimonial-grid {
         grid-template-columns: 1fr;
       }
 
@@ -326,12 +390,24 @@
 <body>
   <div class="page-shell">
     <header class="site-header">
-      <div>
+      <div class="brand-wrapper">
+        <svg class="brand-logo-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <path d="M41.72 17.443a4.793 4.793 0 0 0-6.49-1.74l-11.84 6.83-5.26-9.12a4.802 4.802 0 0 0-6.55-1.75 4.8 4.8 0 0 0-1.75 6.55l5.26 9.12-11.83 6.83a4.8 4.8 0 0 0-1.75 6.55 4.8 4.8 0 0 0 6.55 1.75l11.83-6.83 5.27 9.12a4.787 4.787 0 0 0 4.15 2.4c.82 0 1.64-.21 2.4-.65a4.802 4.802 0 0 0 1.75-6.55l-5.27-9.12 11.84-6.83a4.793 4.793 0 0 0 1.75-6.49z" fill="#4285F4"/>
+          <path d="M35.23 15.703l-11.84 6.83-5.26-9.12a4.802 4.802 0 0 0-6.55-1.75 4.8 4.8 0 0 0-1.75 6.55l5.26 9.12-11.83 6.83a4.8 4.8 0 0 0-1.75 6.55 4.8 4.8 0 0 0 6.55 1.75l11.83-6.83 5.27 9.12a4.787 4.787 0 0 0 4.15 2.4c.82 0 1.64-.21 2.4-.65a4.802 4.802 0 0 0 1.75-6.55l-5.27-9.12" fill="#34A853"/>
+          <path d="M23.39 22.533l-5.26-9.12a4.802 4.802 0 0 0-6.55-1.75 4.8 4.8 0 0 0-1.75 6.55l5.26 9.12-11.83 6.83a4.8 4.8 0 0 0-1.75 6.55 4.8 4.8 0 0 0 6.55 1.75l11.83-6.83" fill="#FBBC05"/>
+          <path d="M18.13 22.533l-11.83 6.83a4.8 4.8 0 0 0-1.75 6.55 4.8 4.8 0 0 0 6.55 1.75l11.83-6.83" fill="#EA4335"/>
+          <circle cx="10.15" cy="19.14" r="1.5" fill="#FFF"/>
+          <circle cx="15.41" cy="28.26" r="1.5" fill="#FFF"/>
+          <circle cx="24.53" cy="33.52" r="1.5" fill="#FFF"/>
+          <circle cx="33.66" cy="28.26" r="1.5" fill="#FFF"/>
+          <circle cx="38.91" cy="19.14" r="1.5" fill="#FFF"/>
+        </svg>
         <span class="brand-logo">KITAGAS Studio</span>
       </div>
       <nav class="site-nav">
         <a href="#features">Features</a>
         <a href="#comparison">Comparison</a>
+        <a href="#testimonials">Testimonials</a>
         <a href="#workspace">Workspace</a>
       </nav>
     </header>
@@ -341,6 +417,7 @@
         <div class="hero-copy">
           <p class="eyebrow">⚡ AI-driven Google Apps Script</p>
           <h1>Build production-ready Apps in minutes</h1>
+          <span class="tagline-sub">[MEMBUAT APLIKASI SEMUDAH MENGETIK PESAN]</span>
           <p>Use natural language to describe features — KITAGAS generates code, UI, and deployment steps automatically.</p>
           <div class="hero-actions">
             <a class="btn-fire" href="#workspace">Start Building →</a>
@@ -349,7 +426,9 @@
 
         <aside class="hero-preview">
           <strong>✨ Live workspace</strong>
-          <div class="preview-box">Extension sidebar preview · Use the toggle button on Google Apps Script pages</div>
+          <div class="preview-box">
+            <video class="workspace-video" src="https://storage.googleapis.com/web-dev-assets/video-worker/video-worker.mp4" autoplay loop muted playsinline></video>
+          </div>
         </aside>
       </section>
 
@@ -417,6 +496,34 @@
       <section class="section-surface">
         <h2 class="section-title">Trusted by</h2>
         <p class="section-copy">Masajid • Woonotif • Sentwa • Themefood • Umrahverse • Haramain Tech</p>
+      </section>
+
+      <section id="testimonials" class="section-surface">
+        <h2 class="section-title">What our users say</h2>
+        <p class="section-copy">Stories from developers and teams streamlining their Google Workspace workflow.</p>
+        <div class="testimonial-grid">
+          <div class="card testimonial-card">
+            <p class="testimonial-text">"Sangat memangkas waktu pengerjaan modul WhatsApp gateway kami. Integrasi logika GAS-nya akurat banget."</p>
+            <div class="testimonial-author">
+              <strong>Ahmad F.</strong>
+              <span>Woonotif</span>
+            </div>
+          </div>
+          <div class="card testimonial-card">
+            <p class="testimonial-text">"Membuat sistem rekap otomatis kas masjid kini jauh lebih simpel. Tinggal ketik kebutuhan, kodenya langsung siap pakai."</p>
+            <div class="testimonial-author">
+              <strong>Uman R.</strong>
+              <span>Masajid Team</span>
+            </div>
+          </div>
+          <div class="card testimonial-card">
+            <p class="testimonial-text">"Penulisan manifes manifes umrah terotomatisasi dengan baik tanpa kami harus pusing setup OAuth manual yang ribet."</p>
+            <div class="testimonial-author">
+              <strong>Siti H.</strong>
+              <span>Umrahverse</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section id="workspace" class="section-surface">
