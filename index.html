@@ -127,6 +127,12 @@
       padding: 1rem 2rem;
     }
 
+    .brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
     .brand-logo {
       font-weight: 800;
       font-size: 1.125rem;
@@ -166,6 +172,16 @@
       font-size: clamp(2.25rem, 4vw, 3.5rem);
       line-height: 1.05;
       margin: 1rem 0;
+    }
+
+    .tagline-sub {
+      display: block;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #a855f7;
+      margin-top: 0.5rem;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.02em;
     }
 
     .hero-copy p {
@@ -232,8 +248,8 @@
       margin-bottom: 1.5rem;
     }
 
-    /* Feature Grid */
-    .feature-grid {
+    /* Feature & Testimonial Grid */
+    .feature-grid, .testimonial-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.25rem;
@@ -260,6 +276,35 @@
 
     .card p {
       font-size: 0.95rem;
+    }
+
+    /* Testimonial Specific Styles */
+    .testimonial-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      color: #cbd5e1;
+      margin-bottom: 1.25rem;
+    }
+
+    .testimonial-author {
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 0.75rem;
+    }
+
+    .testimonial-author strong {
+      color: #ffffff;
+      display: block;
+    }
+
+    .testimonial-author span {
+      color: #7c3aed;
+      font-weight: 600;
     }
 
     /* Table */
@@ -308,7 +353,7 @@
         grid-template-columns: 1fr;
       }
 
-      .feature-grid {
+      .feature-grid, .testimonial-grid {
         grid-template-columns: 1fr;
       }
 
@@ -326,12 +371,17 @@
 <body>
   <div class="page-shell">
     <header class="site-header">
-      <div>
+      <div class="brand-wrapper">
+        <svg width="22" height="22" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 0L64 11V53L32 64L0 53V11L32 0Z" fill="#1A73E8"/>
+          <path d="M19 22H45V27H19V22ZM19 32H45V37H19V32ZM19 42H37V47H19V42Z" fill="white"/>
+        </svg>
         <span class="brand-logo">KITAGAS Studio</span>
       </div>
       <nav class="site-nav">
         <a href="#features">Features</a>
         <a href="#comparison">Comparison</a>
+        <a href="#testimonials">Testimonials</a>
         <a href="#workspace">Workspace</a>
       </nav>
     </header>
@@ -341,6 +391,7 @@
         <div class="hero-copy">
           <p class="eyebrow">⚡ AI-driven Google Apps Script</p>
           <h1>Build production-ready Apps in minutes</h1>
+          <span class="tagline-sub">[MEMBUAT APLIKASI SEMUDAH MENGETIK PESAN]</span>
           <p>Use natural language to describe features — KITAGAS generates code, UI, and deployment steps automatically.</p>
           <div class="hero-actions">
             <a class="btn-fire" href="#workspace">Start Building →</a>
@@ -417,6 +468,34 @@
       <section class="section-surface">
         <h2 class="section-title">Trusted by</h2>
         <p class="section-copy">Masajid • Woonotif • Sentwa • Themefood • Umrahverse • Haramain Tech</p>
+      </section>
+
+      <section id="testimonials" class="section-surface">
+        <h2 class="section-title">What our users say</h2>
+        <p class="section-copy">Stories from developers and teams streamlining their Google Workspace workflow.</p>
+        <div class="testimonial-grid">
+          <div class="card testimonial-card">
+            <p class="testimonial-text">"Sangat memangkas waktu pengerjaan modul WhatsApp gateway kami. Integrasi logika GAS-nya akurat banget."</p>
+            <div class="testimonial-author">
+              <strong>Ahmad F.</strong>
+              <span>Woonotif</span>
+            </div>
+          </div>
+          <div class="card testimonial-card">
+            <p class="testimonial-text">"Membuat sistem rekap otomatis kas masjid kini jauh lebih simpel. Tinggal ketik kebutuhan, kodenya langsung siap pakai."</p>
+            <div class="testimonial-author">
+              <strong>Uman R.</strong>
+              <span>Masajid Team</span>
+            </div>
+          </div>
+          <div class="card testimonial-card">
+            <p class="testimonial-text">"Penulisan manifes manifes umrah terotomatisasi dengan baik tanpa kami harus pusing setup OAuth manual yang ribet."</p>
+            <div class="testimonial-author">
+              <strong>Siti H.</strong>
+              <span>Umrahverse</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section id="workspace" class="section-surface">
